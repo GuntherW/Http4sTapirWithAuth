@@ -18,7 +18,7 @@ object Hello {
       Task(s"Hello, $name! config: ${config.someValue}".asRight[Unit])
     }
 
-  // TODO Exercise 2
+  // TODO Exercise 2 // würde man den AuthUser dann hier am besten übergeben? Wahrscheinlich führt dieser Weg hier nicht zum Ziel, da keine Benutzung der AuthMiddleware von http4s
   def hello3(name: String, user: AuthUser): Reader[ServiceConfig, Task[Either[Unit, String]]] =
     Reader { config: ServiceConfig =>
       Task(s"Hello, $name! You are identified as ${user.name}. config: ${config.someValue}".asRight[Unit])

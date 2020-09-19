@@ -17,8 +17,11 @@ object Main extends TaskApp {
 
   private val config = ServiceConfig("some special value")
 
-  private val helloWorldRoutes: HttpRoutes[Task] = Tapir.helloWorld
+  private val hello1Routes: HttpRoutes[Task] = Tapir.hello1
     .toRoutes(Hello.hello1)
+
+  private val hello2Routes: HttpRoutes[Task] = Tapir.hello2
+    .toRoutes(n => Hello.hello2(n).run(config))
 
 //  val auth = AuthenticationMiddleware(config) // TODO
 
@@ -27,7 +30,11 @@ object Main extends TaskApp {
   def run(args: List[String]): Task[ExitCode] =
     BlazeServerBuilder[Task](scheduler)
       .bindHttp(8080, "0.0.0.0")
-      .withHttpApp(Router("/" -> (helloWorldRoutes <+> swaggerRoute)).orNotFound)
+      .withHttpApp(
+        Router(
+          "/" -> (hello1Routes <+> hello2Routes <+> swaggerRoute)
+        ).orNotFound
+      )
       .serve
       .compile
       .drain
