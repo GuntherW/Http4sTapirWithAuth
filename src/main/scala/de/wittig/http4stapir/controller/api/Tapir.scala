@@ -1,5 +1,6 @@
 package de.wittig.http4stapir.controller.api
 
+import monix.eval.Task
 import sttp.tapir._
 import sttp.tapir.docs.openapi._
 import sttp.tapir.openapi.circe.yaml._
@@ -26,5 +27,5 @@ object Tapir {
     .toOpenAPI("Erster Versuch", "1.0")
     .toYaml
 
-  val swagger = new SwaggerHttp4s(yaml)
+  val swaggerRoute = new SwaggerHttp4s(yaml).routes[Task]
 }
