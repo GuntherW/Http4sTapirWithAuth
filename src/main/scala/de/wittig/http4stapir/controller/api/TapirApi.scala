@@ -1,11 +1,11 @@
-package de.wittig.http4stapir.controller
+package de.wittig.http4stapir.controller.api
 
 import sttp.tapir._
 import sttp.tapir.docs.openapi._
 import sttp.tapir.openapi.circe.yaml._
 import sttp.tapir.swagger.http4s.SwaggerHttp4s
 
-object MyEndPoints {
+object TapirApi {
 
   val helloWorld: Endpoint[String, Unit, String, Any] = endpoint.get
     .in("hello")
