@@ -8,7 +8,7 @@ import sttp.tapir.swagger.http4s.SwaggerHttp4s
 object Tapir {
 
   val helloWorld: Endpoint[String, Unit, String, Any] = endpoint.get
-    .in("hello")
+    .in("hello1")
     .in(query[String]("name"))
     .out(stringBody)
 

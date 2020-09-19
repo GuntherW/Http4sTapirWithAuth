@@ -11,14 +11,14 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.syntax.kleisli._
 import sttp.tapir.server.http4s._
 
-case class ServiceConfig(nameSuffix: String)
+case class ServiceConfig(someValue: String)
 
 object Main extends TaskApp {
 
-  private val config = ServiceConfig("Name vom Backend")
+  private val config = ServiceConfig("some special value")
 
   private val helloWorldRoutes: HttpRoutes[Task] = Tapir.helloWorld
-    .toRoutes(Hello.helloWorld)
+    .toRoutes(Hello.hello1)
 
 //  val auth = AuthenticationMiddleware(config) // TODO
 
