@@ -10,7 +10,9 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.syntax.kleisli._
 import sttp.tapir.server.http4s._
 
-object MainMonix extends TaskApp {
+case class ServiceConfig(nameSuffix: String)
+
+object Main extends TaskApp {
 
   private val config = ServiceConfig("Name vom Backend")
 

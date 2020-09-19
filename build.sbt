@@ -4,6 +4,10 @@ val Specs2Version  = "4.10.3"
 val LogbackVersion = "1.2.3"
 val catsVersion    = "2.2.0"
 val tapirVersion   = "0.17.0-M1"
+val sttp           = "3.0.0-RC4"
+val sttpModel      = "1.2.0-RC3"
+val sttpShared     = "1.0.0-RC5"
+val monixVersion   = "3.2.2"
 
 lazy val root = (project in file("."))
   .settings(
@@ -18,8 +22,8 @@ lazy val root = (project in file("."))
       "org.http4s"                   %% "http4s-dsl"               % Http4sVersion,
       "io.circe"                     %% "circe-generic"            % CirceVersion,
       "ch.qos.logback"                % "logback-classic"          % LogbackVersion,
-      "com.softwaremill.sttp.model"  %% "core"                     % Versions.sttpModel,
-      "com.softwaremill.sttp.shared" %% "core"                     % Versions.sttpShared,
+      "com.softwaremill.sttp.model"  %% "core"                     % sttpModel,
+      "com.softwaremill.sttp.shared" %% "core"                     % sttpShared,
       "com.softwaremill.sttp.tapir"  %% "tapir-http4s-server"      % tapirVersion,
       "org.typelevel"                %% "cats-core"                % catsVersion,
       "com.softwaremill.sttp.tapir"  %% "tapir-core"               % tapirVersion,
@@ -27,7 +31,7 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.tapir"  %% "tapir-openapi-circe-yaml" % tapirVersion,
       "com.softwaremill.sttp.tapir"  %% "tapir-swagger-ui-http4s"  % tapirVersion,
       "com.softwaremill.sttp.tapir"  %% "tapir-redoc-http4s"       % tapirVersion,
-      "io.monix"                     %% "monix"                    % "3.2.2"
+      "io.monix"                     %% "monix"                    % monixVersion
     ),
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.10.3"),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1")
