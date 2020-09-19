@@ -3,7 +3,7 @@ package de.wittig.http4stapir
 import cats.effect.ExitCode
 import cats.implicits._
 import de.wittig.http4stapir.controller.Hello
-import de.wittig.http4stapir.controller.api.TapirApi
+import de.wittig.http4stapir.controller.api.Tapir
 import monix.eval.{Task, TaskApp}
 import org.http4s.HttpRoutes
 import org.http4s.server.Router
@@ -17,12 +17,12 @@ object Main extends TaskApp {
 
   private val config = ServiceConfig("Name vom Backend")
 
-  private val helloWorldRoutes: HttpRoutes[Task] = TapirApi.helloWorld
+  private val helloWorldRoutes: HttpRoutes[Task] = Tapir.helloWorld
     .toRoutes(Hello.helloWorld)
 
 //  val auth = AuthenticationMiddleware(config) // TODO
 
-  private val swaggerRoute: HttpRoutes[Task] = TapirApi.swagger.routes[Task]
+  private val swaggerRoute: HttpRoutes[Task] = Tapir.swagger.routes[Task]
 
   def run(args: List[String]): Task[ExitCode] =
     BlazeServerBuilder[Task](scheduler)

@@ -5,7 +5,7 @@ import sttp.tapir.docs.openapi._
 import sttp.tapir.openapi.circe.yaml._
 import sttp.tapir.swagger.http4s.SwaggerHttp4s
 
-object TapirApi {
+object Tapir {
 
   val helloWorld: Endpoint[String, Unit, String, Any] = endpoint.get
     .in("hello")
