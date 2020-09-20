@@ -2,6 +2,7 @@ package de.wittig.http4stapir
 
 import cats.effect.ExitCode
 import cats.implicits._
+import de.wittig.http4stapir.auth.AuthenticationMiddleware
 import de.wittig.http4stapir.controller.Hello
 import de.wittig.http4stapir.controller.api.Tapir
 import monix.eval.{Task, TaskApp}
@@ -15,7 +16,7 @@ case class ServiceConfig(someValue: String)
 
 object Main extends TaskApp {
   private val config = ServiceConfig("some special value")
-//  private val auth   = AuthenticationMiddleware(config) // TODO
+  private val auth   = AuthenticationMiddleware(config) // TODO
 
   private val hello1Routes: HttpRoutes[Task] = Tapir.hello1
     .toRoutes(Hello.hello1)
