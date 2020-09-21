@@ -12,7 +12,6 @@ object Hello {
   def hello1(name: String): Task[Either[Unit, String]] =
     Task(s"Hello, $name!".asRight[Unit])
 
-  // TODO Exercise 1
   def hello2(name: String): Reader[ServiceConfig, Task[Either[Unit, String]]] =
     Reader { config: ServiceConfig =>
       Task(s"Hello, $name! config: ${config.someValue}".asRight[Unit])

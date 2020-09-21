@@ -8,20 +8,15 @@ import sttp.tapir.swagger.http4s.SwaggerHttp4s
 
 object Tapir {
 
-  val hello1: Endpoint[String, Unit, String, Any] = endpoint.get
-    .in("hello1")
+  private val hello = endpoint.get
     .in(query[String]("name"))
     .out(stringBody)
 
-  val hello2: Endpoint[String, Unit, String, Any] = endpoint.get
-    .in("hello2")
-    .in(query[String]("name"))
-    .out(stringBody)
+  val hello1: Endpoint[String, Unit, String, Any] = hello.in("hello1")
 
-  val hello3: Endpoint[String, Unit, String, Any] = endpoint.get
-    .in("hello3")
-    .in(query[String]("name"))
-    .out(stringBody)
+  val hello2: Endpoint[String, Unit, String, Any] = hello.in("hello2")
+
+  val hello3: Endpoint[String, Unit, String, Any] = hello.in("hello3")
 
   val yaml: String = List(hello1, hello2, hello3)
     .toOpenAPI("Erster Versuch", "1.0")
