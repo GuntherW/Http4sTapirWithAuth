@@ -40,7 +40,7 @@ object Main extends TaskApp {
   private val hello1Routes: HttpRoutes[Task] = Tapir.hello1
     .toRoutes {
       case (n, authUser) =>
-        Hello.hello1(n, authUser)
+        Hello.hello1(n, authUser, config)
     }
 
   private val hello2Routes: HttpRoutes[Task] = Tapir.hello2

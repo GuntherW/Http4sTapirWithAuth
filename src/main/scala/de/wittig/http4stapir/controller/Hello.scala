@@ -5,13 +5,12 @@ import cats.implicits.catsSyntaxEitherId
 import de.wittig.http4stapir.ServiceConfig
 import de.wittig.http4stapir.auth.AuthUser
 import monix.eval.Task
-import sttp.tapir.model.UsernamePassword
 
 object Hello {
 
   // works already
-  def hello1(name: String, auth: AuthUser): Task[Either[Unit, String]] =
-    Task(s"Hello, $name!".asRight[Unit])
+  def hello1(name: String, auth: AuthUser, serviceConfig: ServiceConfig): Task[Either[Unit, String]] =
+    Task(s"Hello, $name! From config: ${serviceConfig.tokenPrefix}".asRight[Unit])
 
   def hello2(name: String, user: AuthUser): Reader[ServiceConfig, Task[Either[Unit, String]]] =
     Reader { config: ServiceConfig =>
