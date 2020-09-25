@@ -5,6 +5,7 @@ import cats.implicits.catsSyntaxEitherId
 import de.wittig.http4stapir.ServiceConfig
 import de.wittig.http4stapir.auth.AuthUser
 import monix.eval.Task
+import sttp.tapir.model.UsernamePassword
 
 object Hello {
 
@@ -12,15 +13,15 @@ object Hello {
   def hello1(name: String): Task[Either[Unit, String]] =
     Task(s"Hello, $name!".asRight[Unit])
 
-  def hello2(name: String): Reader[ServiceConfig, Task[Either[Unit, String]]] =
+  def hello2(name: String, userpw: UsernamePassword): Reader[ServiceConfig, Task[Either[Unit, String]]] =
     Reader { config: ServiceConfig =>
-      Task(s"Hello, $name! config: ${config.someValue}".asRight[Unit])
+      Task(s"Hello, $name! config: ${config.someValue}, UsernamePassword: $userpw".asRight[Unit])
     }
 
   // TODO Exercise 2 // würde man den AuthUser dann hier am besten übergeben? Wahrscheinlich führt dieser Weg hier nicht zum Ziel, da keine Benutzung der AuthMiddleware von http4s
-  def hello3(name: String, user: AuthUser): Reader[ServiceConfig, Task[Either[Unit, String]]] =
+  def hello3(name: String, authuser: AuthUser): Reader[ServiceConfig, Task[Either[Unit, String]]] =
     Reader { config: ServiceConfig =>
-      Task(s"Hello, $name! You are identified as ${user.name}. config: ${config.someValue}".asRight[Unit])
+      Task(s"Hello, $name! You are identified as $authuser. config: ${config.someValue}".asRight[Unit])
     }
 
   // TODO Exercise 3

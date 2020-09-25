@@ -6,8 +6,13 @@ import de.wittig.http4stapir.ServiceConfig
 import monix.eval.Task
 import org.http4s.Request
 import org.http4s.server.AuthMiddleware
+import sttp.tapir.{Codec, CodecFormat}
 
 case class AuthUser(name: String)
+
+object AuthUser {
+  implicit val codec: Codec[String, AuthUser, CodecFormat.TextPlain] = Codec.string.map(s => AuthUser(s))(_.name)
+}
 
 object AuthenticationMiddleware {
 
