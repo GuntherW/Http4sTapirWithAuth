@@ -11,7 +11,7 @@ import sttp.tapir.{Codec, CodecFormat}
 case class AuthUser(name: String)
 
 object AuthUser {
-  implicit val codec: Codec[String, AuthUser, CodecFormat.TextPlain] = Codec.string.map(s => AuthUser(s))(_.name)
+  implicit def codec(implicit serviceConfig: ServiceConfig): Codec[String, AuthUser, CodecFormat.TextPlain] = Codec.string.map(s => AuthUser(s))(_.name)
 }
 
 object AuthenticationMiddleware {
@@ -23,7 +23,7 @@ object AuthenticationMiddleware {
     // Als erster Schritt erstmal nur hart einen Nutzer zurückgeben.
     // TODO: Muß später aus dem jwt Token dekodiert werden.
     Task(
-      AuthUser(config.someValue + "Middleware").some
+      AuthUser(config.tokenPrefix + "Middleware").some
     )
   )
 }
