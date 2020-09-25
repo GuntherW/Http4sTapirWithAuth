@@ -5,8 +5,8 @@ val LogbackVersion = "1.2.3"
 val catsVersion    = "2.2.0"
 val tapirVersion   = "0.17.0-M1"
 val sttp           = "3.0.0-RC4"
-val sttpModel      = "1.2.0-RC3"
-val sttpShared     = "1.0.0-RC5"
+val sttpModel      = "1.2.0-RC4"
+val sttpShared     = "1.0.0-RC6"
 val monixVersion   = "3.2.2"
 
 lazy val root = (project in file("."))
