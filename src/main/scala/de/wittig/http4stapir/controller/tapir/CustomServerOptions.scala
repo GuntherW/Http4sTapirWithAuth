@@ -23,5 +23,4 @@ object CustomServerOptions {
     Http4sServerOptions
       .default(implicitly[Sync[F]], implicitly[ContextShift[F]])
       .copy(decodeFailureHandler = ServerDefaults.decodeFailureHandler.copy(respondWithStatusCode = myFailureHandler, failureMessage = myFailureMessage))
-
 }

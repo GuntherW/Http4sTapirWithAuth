@@ -30,14 +30,13 @@ object Main extends TaskApp {
       Hello.hello2(n, authUser).run(config)
     }
 
-  def authenticate(usernamePassword: UsernamePassword): Option[AuthUser] = {
-    Some(AuthUser(usernamePassword.username))
-  }
-
   private val hello3Routes: HttpRoutes[Task] = Api.hello3
     .toRoutes { case (jsonInput, authUser) =>
       Hello.hello3(jsonInput.name, authUser).run(config)
     }
+
+  def authenticate(usernamePassword: UsernamePassword): Option[AuthUser] =
+    Some(AuthUser(usernamePassword.username))
 
   def run(args: List[String]): Task[ExitCode] =
     BlazeServerBuilder[Task](scheduler)

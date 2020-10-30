@@ -1,12 +1,11 @@
-val Http4sVersion  = "0.21.7"
+val Http4sVersion  = "0.21.8"
 val CirceVersion   = "0.13.0"
-val Specs2Version  = "4.10.3"
 val LogbackVersion = "1.2.3"
 val catsVersion    = "2.2.0"
 val tapirVersion   = "0.17.0-M1"
 val sttp           = "3.0.0-RC4"
-val sttpModel      = "1.2.0-RC4"
-val sttpShared     = "1.0.0-RC6"
+val sttpModel      = "1.2.0-RC5"
+val sttpShared     = "1.0.0-RC7"
 val monixVersion   = "3.2.2"
 
 lazy val root = (project in file("."))
@@ -21,7 +20,7 @@ lazy val root = (project in file("."))
       "org.http4s"                   %% "http4s-circe"             % Http4sVersion,
       "org.http4s"                   %% "http4s-dsl"               % Http4sVersion,
       "io.circe"                     %% "circe-generic"            % CirceVersion,
-      "ch.qos.logback"               % "logback-classic"           % LogbackVersion,
+      "ch.qos.logback"                % "logback-classic"          % LogbackVersion,
       "com.softwaremill.sttp.model"  %% "core"                     % sttpModel,
       "com.softwaremill.sttp.shared" %% "core"                     % sttpShared,
       "org.typelevel"                %% "cats-core"                % catsVersion,

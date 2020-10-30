@@ -37,11 +37,7 @@ object Api {
 
   def swaggerRoute(implicit serviceConfig: ServiceConfig): HttpRoutes[Task] = {
 
-    val yaml = List(
-      hello1,
-      hello2,
-      hello3
-    )
+    val yaml = List(hello1, hello2, hello3)
       .toOpenAPI("Erster Versuch", "1.0")
       .toYaml
 
