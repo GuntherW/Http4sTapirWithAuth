@@ -13,7 +13,7 @@ import sttp.tapir.swagger.http4s.SwaggerHttp4s
 import JwtDecoder._
 
 object Api {
-
+  import sttp.tapir.generic.auto._
   private def hello(implicit serviceConfig: ServiceConfig) =
     endpoint.get
       .in(query[String]("name"))
