@@ -11,36 +11,31 @@ import sttp.tapir.json.circe.jsonBody
 import sttp.tapir.openapi.circe.yaml._
 import sttp.tapir.swagger.http4s.SwaggerHttp4s
 import JwtDecoder._
+import cats.implicits.catsSyntaxOptionId
+import de.wittig.BuildInfo
+import sttp.tapir.openapi.Info
 
 object Api {
   import sttp.tapir.generic.auto._
-  private def hello(implicit serviceConfig: ServiceConfig) =
+  private def hello(implicit config: ServiceConfig) =
     endpoint.get
       .in(query[String]("name"))
       .in(decodeJwt)
       .out(stringBody)
 
-  def hello1(implicit serviceConfig: ServiceConfig): Endpoint[(String, AuthUser), Unit, String, Any] =
+  def hello1(implicit config: ServiceConfig): Endpoint[(String, AuthUser), Unit, String, Any] =
     hello
       .in("hello1")
 
-  def hello2(implicit serviceConfig: ServiceConfig): Endpoint[(String, AuthUser), Unit, String, Any] =
+  def hello2(implicit config: ServiceConfig): Endpoint[(String, AuthUser), Unit, String, Any] =
     hello
       .in("hello2")
 
-  def hello3(implicit serviceConfig: ServiceConfig): Endpoint[(JsonInput, AuthUser), Unit, String, Any] =
+  def hello3(implicit config: ServiceConfig): Endpoint[(JsonInput, AuthUser), Unit, String, Any] =
     endpoint.post
       .in("hello3")
       .in(jsonBody[JsonInput])
       .in(decodeJwt)
       .out(stringBody)
 
-  def swaggerRoute(implicit serviceConfig: ServiceConfig): HttpRoutes[Task] = {
-
-    val yaml = List(hello1, hello2, hello3)
-      .toOpenAPI("Erster Versuch", "1.0")
-      .toYaml
-
-    new SwaggerHttp4s(yaml).routes[Task]
-  }
 }

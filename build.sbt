@@ -2,13 +2,17 @@ val Http4sVersion  = "0.21.14"
 val CirceVersion   = "0.13.0"
 val LogbackVersion = "1.2.3"
 val catsVersion    = "2.3.0"
-val tapirVersion   = "0.17.0-M11"
-val sttpModel      = "1.2.0-RC6"
-val sttpShared     = "1.0.0-RC9"
+val tapirVersion   = "0.17.0"
+val sttpModel      = "1.2.0-RC8"
+val sttpShared     = "1.0.0-RC11"
 val monixVersion   = "3.3.0"
 
 lazy val root = (project in file("."))
+  .enablePlugins(BuildInfoPlugin)
   .settings(
+    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
+    buildInfoPackage := "de.wittig",
+    buildInfoOptions += BuildInfoOption.BuildTime,
     organization := "de.wittig",
     name := "http4stapir",
     version := "0.0.1-SNAPSHOT",

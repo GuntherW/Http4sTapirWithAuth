@@ -1,0 +1,21 @@
+GET http://localhost:8080/hello1?name=Markus
+Authorization: Bearer foobar
+
+###
+GET http://localhost:8080/hello2?name=Markus
+Authorization: Bearer foobar
+
+###
+POST http://localhost:8080/hello3
+Authorization: Bearer foobar
+
+{
+   "name":"Gunther"
+}
+
+### Api
+GET http://localhost:8080/docs
+
+
+### Unauthorized
+GET http://localhost:8080/hello1?name=Markus
