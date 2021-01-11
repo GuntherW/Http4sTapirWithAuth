@@ -18,20 +18,17 @@ object Main extends TaskApp {
   private implicit val config: ServiceConfig = ServiceConfig("foobar")
 //  private implicit val customServerOption: Http4sServerOptions[Task] = CustomServerOptions.customServerOptions
 
-  private val hello1Routes: HttpRoutes[Task] = Api.hello1
-    .toRoutes { case (n, authUser) =>
-      Hello.hello1(n, authUser, config)
-    }
+  private val hello1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello1) { case (n, authUser) =>
+    Hello.hello1(n, authUser, config)
+  }
 
-  private val hello2Routes: HttpRoutes[Task] = Api.hello2
-    .toRoutes { case (n, authUser) =>
-      Hello.hello2(n, authUser).run(config)
-    }
+  private val hello2Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello2) { case (n, authUser) =>
+    Hello.hello2(n, authUser).run(config)
+  }
 
-  private val hello3Routes: HttpRoutes[Task] = Api.hello3
-    .toRoutes { case (jsonInput, authUser) =>
-      Hello.hello3(jsonInput.name, authUser).run(config)
-    }
+  private val hello3Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello3) { case (jsonInput, authUser) =>
+    Hello.hello3(jsonInput.name, authUser).run(config)
+  }
 
   def run(args: List[String]): Task[ExitCode] =
     BlazeServerBuilder[Task](scheduler)

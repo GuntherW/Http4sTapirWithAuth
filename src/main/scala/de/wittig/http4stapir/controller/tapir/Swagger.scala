@@ -20,8 +20,9 @@ object Swagger {
       Some("BuildTime: " + BuildInfo.builtAtString)
     )
 
-    val yaml = List(hello1, hello2, hello3)
-      .toOpenAPI(info)
+    val endpoints = List(hello1, hello2, hello1)
+    val yaml      = OpenAPIDocsInterpreter
+      .toOpenAPI(endpoints, info)
       .toYaml
 
     new SwaggerHttp4s(yaml).routes[Task]
