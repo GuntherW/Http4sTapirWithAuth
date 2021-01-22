@@ -1,12 +1,12 @@
-GET http://localhost:8080/hello1?name=Markus
+GET http://localhost:8084/hello1?name=Markus
 Authorization: Bearer foobar
 
 ###
-GET http://localhost:8080/hello2?name=Markus
+GET http://localhost:8084/hello2?name=Markus
 Authorization: Bearer foobar
 
 ###
-POST http://localhost:8080/hello3
+POST http://localhost:8084/hello3
 Authorization: Bearer foobar
 
 {
@@ -14,8 +14,8 @@ Authorization: Bearer foobar
 }
 
 ### Api
-GET http://localhost:8080/docs
+GET http://localhost:8084/docs
 
 
 ### Unauthorized
-GET http://localhost:8080/hello1?name=Markus
+GET http://localhost:8084/hello1?name=Markus

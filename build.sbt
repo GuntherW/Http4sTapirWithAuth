@@ -2,9 +2,9 @@ val Http4sVersion  = "0.21.15"
 val CirceVersion   = "0.13.0"
 val LogbackVersion = "1.2.3"
 val catsVersion    = "2.3.1"
-val tapirVersion   = "0.17.2"
-val sttpModel      = "1.2.0-RC12"
-val sttpShared     = "1.0.0-RC13"
+val tapirVersion   = "0.17.7"
+val sttpModel      = "1.2.0"
+val sttpShared     = "1.0.0"
 val monixVersion   = "3.3.0"
 
 lazy val root = (project in file("."))

@@ -32,7 +32,7 @@ object Main extends TaskApp {
 
   def run(args: List[String]): Task[ExitCode] =
     BlazeServerBuilder[Task](scheduler)
-      .bindHttp(8080, "0.0.0.0")
+      .bindHttp(8084, "0.0.0.0")
       .withHttpApp(
         Router(
           "/" -> (
