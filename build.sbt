@@ -1,11 +1,11 @@
-val Http4sVersion  = "0.21.19"
-val CirceVersion   = "0.13.0"
-val LogbackVersion = "1.2.3"
-val catsVersion    = "2.4.1"
-val tapirVersion   = "0.17.11"
-val sttpModel      = "1.3.3"
-val sttpShared     = "1.1.0"
+val catsVersion    = "2.4.2"
+val circeVersion   = "0.13.0"
+val http4sVersion  = "0.21.19"
+val logbackVersion = "1.2.3"
 val monixVersion   = "3.3.0"
+val sttpModel      = "1.3.3"
+val sttpShared     = "1.1.1"
+val tapirVersion   = "0.17.12"
 
 lazy val root = (project in file("."))
   .enablePlugins(BuildInfoPlugin)
@@ -16,14 +16,14 @@ lazy val root = (project in file("."))
     organization := "de.wittig",
     name := "http4stapir",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.13.4",
+    scalaVersion := "2.13.5",
     libraryDependencies ++= Seq(
-      "org.http4s"                   %% "http4s-blaze-server"      % Http4sVersion,
-      "org.http4s"                   %% "http4s-blaze-client"      % Http4sVersion,
-      "org.http4s"                   %% "http4s-circe"             % Http4sVersion,
-      "org.http4s"                   %% "http4s-dsl"               % Http4sVersion,
-      "io.circe"                     %% "circe-generic"            % CirceVersion,
-      "ch.qos.logback"                % "logback-classic"          % LogbackVersion,
+      "org.http4s"                   %% "http4s-blaze-server"      % http4sVersion,
+      "org.http4s"                   %% "http4s-blaze-client"      % http4sVersion,
+      "org.http4s"                   %% "http4s-circe"             % http4sVersion,
+      "org.http4s"                   %% "http4s-dsl"               % http4sVersion,
+      "io.circe"                     %% "circe-generic"            % circeVersion,
+      "ch.qos.logback"                % "logback-classic"          % logbackVersion,
       "com.softwaremill.sttp.model"  %% "core"                     % sttpModel,
       "com.softwaremill.sttp.shared" %% "core"                     % sttpShared,
       "org.typelevel"                %% "cats-core"                % catsVersion,
