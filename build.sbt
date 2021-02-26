@@ -5,7 +5,7 @@ val logbackVersion = "1.2.3"
 val monixVersion   = "3.3.0"
 val sttpModel      = "1.3.3"
 val sttpShared     = "1.1.1"
-val tapirVersion   = "0.17.12"
+val tapirVersion   = "0.17.13"
 
 lazy val root = (project in file("."))
   .enablePlugins(BuildInfoPlugin)
@@ -49,3 +49,4 @@ scalacOptions ++= Seq(
   "-feature",
   "-Xfatal-warnings"
 )
+Global / onChangedBuildSource := ReloadOnSourceChanges
