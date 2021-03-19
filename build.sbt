@@ -1,11 +1,11 @@
-val Http4sVersion  = "0.21.20"
-val CirceVersion   = "0.13.0"
-val LogbackVersion = "1.2.3"
 val catsVersion    = "2.4.2"
-val tapirVersion   = "0.17.19"
+val circeVersion   = "0.13.0"
+val http4sVersion  = "0.21.20"
+val logbackVersion = "1.2.3"
+val monixVersion   = "3.3.0"
 val sttpModel      = "1.3.4"
 val sttpShared     = "1.1.1"
-val monixVersion   = "3.3.0"
+val tapirVersion   = "0.17.19"
 
 lazy val root = (project in file("."))
   .enablePlugins(BuildInfoPlugin)
