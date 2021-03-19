@@ -18,12 +18,12 @@ lazy val root = (project in file("."))
     version := "0.0.1-SNAPSHOT",
     scalaVersion := "2.13.5",
     libraryDependencies ++= Seq(
-      "org.http4s"                   %% "http4s-blaze-server"      % Http4sVersion,
-      "org.http4s"                   %% "http4s-blaze-client"      % Http4sVersion,
-      "org.http4s"                   %% "http4s-circe"             % Http4sVersion,
-      "org.http4s"                   %% "http4s-dsl"               % Http4sVersion,
-      "io.circe"                     %% "circe-generic"            % CirceVersion,
-      "ch.qos.logback"                % "logback-classic"          % LogbackVersion,
+      "org.http4s"                   %% "http4s-blaze-server"      % http4sVersion,
+      "org.http4s"                   %% "http4s-blaze-client"      % http4sVersion,
+      "org.http4s"                   %% "http4s-circe"             % http4sVersion,
+      "org.http4s"                   %% "http4s-dsl"               % http4sVersion,
+      "io.circe"                     %% "circe-generic"            % circeVersion,
+      "ch.qos.logback"                % "logback-classic"          % logbackVersion,
       "com.softwaremill.sttp.model"  %% "core"                     % sttpModel,
       "com.softwaremill.sttp.shared" %% "core"                     % sttpShared,
       "org.typelevel"                %% "cats-core"                % catsVersion,
@@ -49,3 +49,4 @@ scalacOptions ++= Seq(
   "-feature",
   "-Xfatal-warnings"
 )
+Global / onChangedBuildSource := ReloadOnSourceChanges
