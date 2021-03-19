@@ -2,7 +2,7 @@ package de.wittig.http4stapir
 
 import cats.effect.ExitCode
 import cats.implicits._
-import de.wittig.http4stapir.controller.Hello
+import de.wittig.http4stapir.controller.HelloController
 import de.wittig.http4stapir.controller.tapir.{Api, Swagger}
 import monix.eval.{Task, TaskApp}
 import org.http4s.HttpRoutes
@@ -18,16 +18,20 @@ object Main extends TaskApp {
   private implicit val config: ServiceConfig = ServiceConfig("foobar")
 //  private implicit val customServerOption: Http4sServerOptions[Task] = CustomServerOptions.customServerOptions
 
-  private val hello1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello1) { case (authUser, n) =>
-    Hello.hello1(n, authUser, config)
+  private val helloGet1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.helloGet1) { case (authUser, n) =>
+    HelloController.helloGet1(n, authUser, config)
   }
 
-  private val hello2Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello2) { case (authUser, n) =>
-    Hello.hello2(n, authUser).run(config)
+  private val helloGet2Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.helloGet2) { case (authUser, n) =>
+    HelloController.helloGet2(n, authUser).run(config)
   }
 
-  private val hello3Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello3) { case (jsonInput, authUser) =>
-    Hello.hello3(jsonInput.name, authUser).run(config)
+  private val helloGet3Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.helloGet3) { case (authUser, n) =>
+    HelloController.helloGet3(n, authUser, config)
+  }
+
+  private val helloPost1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.helloPost1) { case (authUser, jsonInput) =>
+    HelloController.helloPost1(jsonInput.name, authUser, config)
   }
 
   def run(args: List[String]): Task[ExitCode] =
@@ -36,9 +40,10 @@ object Main extends TaskApp {
       .withHttpApp(
         Router(
           "/" -> (
-            hello1Routes <+>
-              hello2Routes <+>
-              hello3Routes <+>
+            helloGet1Routes <+>
+              helloGet2Routes <+>
+              helloGet3Routes <+>
+              helloPost1Routes <+>
               Swagger.route
           )
         ).orNotFound

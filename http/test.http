@@ -6,7 +6,16 @@ GET http://localhost:8084/hello2?name=Markus
 Authorization: Bearer foobar
 
 ###
-POST http://localhost:8084/hello3
+GET http://localhost:8084/hello3?name=Gunther
+Authorization: Bearer foobar
+
+### // TODO Hier muß ein 401er zurückgegeben werden.
+GET http://localhost:8084/hello3?name=Gunther
+Authorization: Bearer falsch
+
+
+###
+POST http://localhost:8084/hello1
 Authorization: Bearer foobar
 
 {

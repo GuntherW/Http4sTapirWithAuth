@@ -2,41 +2,39 @@ package de.wittig.http4stapir.controller.tapir
 
 import de.wittig.http4stapir.ServiceConfig
 import de.wittig.http4stapir.controller.auth.AuthUser
-import de.wittig.http4stapir.model.JsonInput
-import monix.eval.Task
-import org.http4s.HttpRoutes
+import de.wittig.http4stapir.controller.tapir.JwtDecoder._
+import de.wittig.http4stapir.model.{JsonInput, JsonOutput}
 import sttp.tapir._
-import sttp.tapir.docs.openapi._
+import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe.jsonBody
-import sttp.tapir.openapi.circe.yaml._
-import sttp.tapir.swagger.http4s.SwaggerHttp4s
-import JwtDecoder._
-import cats.implicits.catsSyntaxOptionId
-import de.wittig.BuildInfo
-import sttp.tapir.openapi.Info
 
 object Api {
-  import sttp.tapir.generic.auto._
   private def getAuth(implicit config: ServiceConfig) =
-    endpoint.get
+    endpoint
       .in(decodeJwt)
-      .out(stringBody)
 
-  def hello1(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, String, Any] =
-    getAuth
+  def helloGet1(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, String, Any] =
+    getAuth.get
       .in(query[String]("name"))
       .in("hello1")
+      .out(stringBody)
 
-  def hello2(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, String, Any] =
-    getAuth
+  def helloGet2(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, String, Any] =
+    getAuth.get
       .in(query[String]("name"))
       .in("hello2")
-
-  def hello3(implicit config: ServiceConfig): Endpoint[(JsonInput, AuthUser), Unit, String, Any] =
-    endpoint.post
-      .in("hello3")
-      .in(jsonBody[JsonInput])
-      .in(decodeJwt)
       .out(stringBody)
+
+  def helloGet3(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, JsonOutput, Any] =
+    getAuth.get
+      .in(query[String]("name"))
+      .in("hello3")
+      .out(jsonBody[JsonOutput])
+
+  def helloPost1(implicit config: ServiceConfig): Endpoint[(AuthUser, JsonInput), Unit, JsonOutput, Any] =
+    getAuth.post
+      .in("hello1")
+      .in(jsonBody[JsonInput])
+      .out(jsonBody[JsonOutput])
 
 }

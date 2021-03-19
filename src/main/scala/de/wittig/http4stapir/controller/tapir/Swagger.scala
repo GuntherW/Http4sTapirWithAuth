@@ -2,7 +2,7 @@ package de.wittig.http4stapir.controller.tapir
 
 import de.wittig.BuildInfo
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.tapir.Api.{hello1, hello2, hello3}
+import de.wittig.http4stapir.controller.tapir.Api.{helloGet1, helloGet2, helloPost1}
 import monix.eval.Task
 import org.http4s.HttpRoutes
 import sttp.tapir.openapi.Info
@@ -20,7 +20,7 @@ object Swagger {
       Some("BuildTime: " + BuildInfo.builtAtString)
     )
 
-    val endpoints = List(hello1, hello2, hello3)
+    val endpoints = List(helloGet1, helloGet2, helloPost1)
     val yaml      = OpenAPIDocsInterpreter
       .toOpenAPI(endpoints, info)
       .toYaml
