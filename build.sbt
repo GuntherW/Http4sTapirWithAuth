@@ -1,10 +1,10 @@
-val Http4sVersion  = "0.21.19"
+val Http4sVersion  = "0.21.20"
 val CirceVersion   = "0.13.0"
 val LogbackVersion = "1.2.3"
-val catsVersion    = "2.4.1"
-val tapirVersion   = "0.17.11"
-val sttpModel      = "1.3.3"
-val sttpShared     = "1.1.0"
+val catsVersion    = "2.4.2"
+val tapirVersion   = "0.17.19"
+val sttpModel      = "1.3.4"
+val sttpShared     = "1.1.1"
 val monixVersion   = "3.3.0"
 
 lazy val root = (project in file("."))
@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
     organization := "de.wittig",
     name := "http4stapir",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.13.4",
+    scalaVersion := "2.13.5",
     libraryDependencies ++= Seq(
       "org.http4s"                   %% "http4s-blaze-server"      % Http4sVersion,
       "org.http4s"                   %% "http4s-blaze-client"      % Http4sVersion,

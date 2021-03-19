@@ -18,11 +18,11 @@ object Main extends TaskApp {
   private implicit val config: ServiceConfig = ServiceConfig("foobar")
 //  private implicit val customServerOption: Http4sServerOptions[Task] = CustomServerOptions.customServerOptions
 
-  private val hello1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello1) { case (n, authUser) =>
+  private val hello1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello1) { case (authUser, n) =>
     Hello.hello1(n, authUser, config)
   }
 
-  private val hello2Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello2) { case (n, authUser) =>
+  private val hello2Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.hello2) { case (authUser, n) =>
     Hello.hello2(n, authUser).run(config)
   }
 

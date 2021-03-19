@@ -20,7 +20,7 @@ object Swagger {
       Some("BuildTime: " + BuildInfo.builtAtString)
     )
 
-    val endpoints = List(hello1, hello2, hello1)
+    val endpoints = List(hello1, hello2, hello3)
     val yaml      = OpenAPIDocsInterpreter
       .toOpenAPI(endpoints, info)
       .toYaml

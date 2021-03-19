@@ -17,18 +17,19 @@ import sttp.tapir.openapi.Info
 
 object Api {
   import sttp.tapir.generic.auto._
-  private def hello(implicit config: ServiceConfig) =
+  private def getAuth(implicit config: ServiceConfig) =
     endpoint.get
-      .in(query[String]("name"))
       .in(decodeJwt)
       .out(stringBody)
 
-  def hello1(implicit config: ServiceConfig): Endpoint[(String, AuthUser), Unit, String, Any] =
-    hello
+  def hello1(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, String, Any] =
+    getAuth
+      .in(query[String]("name"))
       .in("hello1")
 
-  def hello2(implicit config: ServiceConfig): Endpoint[(String, AuthUser), Unit, String, Any] =
-    hello
+  def hello2(implicit config: ServiceConfig): Endpoint[(AuthUser, String), Unit, String, Any] =
+    getAuth
+      .in(query[String]("name"))
       .in("hello2")
 
   def hello3(implicit config: ServiceConfig): Endpoint[(JsonInput, AuthUser), Unit, String, Any] =
