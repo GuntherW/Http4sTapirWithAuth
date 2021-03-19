@@ -3,6 +3,7 @@ package de.wittig.http4stapir.controller
 import cats.data.Reader
 import cats.implicits.catsSyntaxEitherId
 import de.wittig.http4stapir.ServiceConfig
+import de.wittig.http4stapir.controller.tapir.Api.{ErrorInfo, Unauthorized}
 import de.wittig.http4stapir.model.{AuthUser, JsonOutput}
 import monix.eval.Task
 
@@ -17,6 +18,12 @@ object HelloController {
 
   def helloGet3(name: String, authUser: AuthUser, config: ServiceConfig): Task[Either[Unit, JsonOutput]] =
     Task(JsonOutput(name, authUser.name, config.tokenPrefix).asRight[Unit])
+
+  def helloGet4(name: String, authUser: AuthUser, config: ServiceConfig): Task[Either[ErrorInfo, JsonOutput]] =
+    if (name == "Gunther")
+      Task(JsonOutput(name, authUser.name, config.tokenPrefix).asRight[ErrorInfo])
+    else
+      Task(Unauthorized(name).asLeft[JsonOutput])
 
   def helloPost1(name: String, authUser: AuthUser, config: ServiceConfig): Task[Either[Unit, JsonOutput]] =
     Task(JsonOutput(name, authUser.name, config.tokenPrefix).asRight[Unit])

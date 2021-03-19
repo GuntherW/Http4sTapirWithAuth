@@ -30,6 +30,10 @@ object Main extends TaskApp {
     HelloController.helloGet3(n, authUser, config)
   }
 
+  private val helloGet4Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.helloGet4) { case (authUser, n) =>
+    HelloController.helloGet4(n, authUser, config)
+  }
+
   private val helloPost1Routes: HttpRoutes[Task] = Http4sServerInterpreter.toRoutes(Api.helloPost1) { case (authUser, jsonInput) =>
     HelloController.helloPost1(jsonInput.name, authUser, config)
   }
@@ -43,6 +47,7 @@ object Main extends TaskApp {
             helloGet1Routes <+>
               helloGet2Routes <+>
               helloGet3Routes <+>
+              helloGet4Routes <+>
               helloPost1Routes <+>
               Swagger.route
           )

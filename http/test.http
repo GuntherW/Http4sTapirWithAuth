@@ -9,9 +9,9 @@ Authorization: Bearer foobar
 GET http://localhost:8084/hello3?name=Gunther
 Authorization: Bearer foobar
 
-### // TODO Hier muß ein 401er zurückgegeben werden.
-GET http://localhost:8084/hello3?name=Gunther
-Authorization: Bearer falsch
+###
+GET http://localhost:8084/hello4?name=falsch
+Authorization: Bearer foobar
 
 
 ###

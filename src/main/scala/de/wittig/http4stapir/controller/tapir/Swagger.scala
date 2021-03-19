@@ -2,7 +2,7 @@ package de.wittig.http4stapir.controller.tapir
 
 import de.wittig.BuildInfo
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.tapir.Api.{helloGet1, helloGet2, helloGet3, helloPost1}
+import de.wittig.http4stapir.controller.tapir.Api.{helloGet1, helloGet2, helloGet3, helloGet4, helloPost1}
 import monix.eval.Task
 import org.http4s.HttpRoutes
 import sttp.tapir.openapi.Info
@@ -19,7 +19,13 @@ object Swagger {
   )
 
   def route(implicit config: ServiceConfig): HttpRoutes[Task] = {
-    val endpoints = List(helloGet1, helloGet2, helloGet3, helloPost1)
+    val endpoints = List(
+      helloGet1,
+      helloGet2,
+      helloGet3,
+      helloGet4,
+      helloPost1
+    )
     val yaml      = OpenAPIDocsInterpreter
       .toOpenAPI(endpoints, info)
       .toYaml
