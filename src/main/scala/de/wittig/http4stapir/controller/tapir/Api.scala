@@ -1,9 +1,8 @@
 package de.wittig.http4stapir.controller.tapir
 
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.auth.AuthUser
 import de.wittig.http4stapir.controller.tapir.JwtDecoder._
-import de.wittig.http4stapir.model.{JsonInput, JsonOutput}
+import de.wittig.http4stapir.model.{AuthUser, JsonInput, JsonOutput}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe.jsonBody

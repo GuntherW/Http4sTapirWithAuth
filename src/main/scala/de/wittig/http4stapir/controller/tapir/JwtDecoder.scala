@@ -1,7 +1,7 @@
 package de.wittig.http4stapir.controller.tapir
 
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.auth.AuthUser
+import de.wittig.http4stapir.model.AuthUser
 import sttp.tapir.EndpointInput.Auth
 import sttp.tapir.{DecodeResult, auth}
 

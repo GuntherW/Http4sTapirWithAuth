@@ -1,4 +1,4 @@
-package de.wittig.http4stapir.controller.auth
+package de.wittig.http4stapir.model
 
 import de.wittig.http4stapir.ServiceConfig
 import sttp.tapir.{Codec, CodecFormat}

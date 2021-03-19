@@ -3,8 +3,7 @@ package de.wittig.http4stapir.controller
 import cats.data.Reader
 import cats.implicits.catsSyntaxEitherId
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.auth.AuthUser
-import de.wittig.http4stapir.model.JsonOutput
+import de.wittig.http4stapir.model.{AuthUser, JsonOutput}
 import monix.eval.Task
 
 object HelloController {
