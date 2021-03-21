@@ -1,8 +1,9 @@
 package de.wittig.http4stapir
 
 import cats.effect.ExitCode
-import de.wittig.http4stapir.controller.routes.HelloRoutes
+import de.wittig.http4stapir.api.routes.HelloRoutes
 import monix.eval.{Task, TaskApp}
+import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
 import org.http4s.server.blaze.BlazeServerBuilder
 
 case class ServiceConfig(tokenPrefix: String)
@@ -14,7 +15,7 @@ object Main extends TaskApp {
   def run(args: List[String]): Task[ExitCode] =
     BlazeServerBuilder[Task](scheduler)
       .bindHttp(8084, "0.0.0.0")
-      .withHttpApp(HelloRoutes.router)
+      .withHttpApp(HelloRoutes.router.orNotFound)
       .serve
       .compile
       .drain

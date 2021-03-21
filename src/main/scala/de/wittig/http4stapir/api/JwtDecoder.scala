@@ -1,7 +1,7 @@
-package de.wittig.http4stapir.controller
+package de.wittig.http4stapir.api
 
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.tapir.Api.{ErrorInfo, Unauthorized}
+import de.wittig.http4stapir.api.{ErrorInfo, Unauthorized}
 import de.wittig.http4stapir.model.AuthUser
 import monix.eval.Task
 import sttp.tapir.EndpointInput.Auth

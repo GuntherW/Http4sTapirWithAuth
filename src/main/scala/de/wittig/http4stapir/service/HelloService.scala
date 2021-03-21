@@ -3,7 +3,7 @@ package de.wittig.http4stapir.service
 import cats.data.Reader
 import cats.implicits.catsSyntaxEitherId
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.tapir.Api.{ErrorInfo, Unauthorized}
+import de.wittig.http4stapir.api._
 import de.wittig.http4stapir.model.{AuthUser, JsonOutput}
 import monix.eval.Task
 

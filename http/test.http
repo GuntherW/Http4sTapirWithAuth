@@ -13,6 +13,10 @@ Authorization: Bearer foobar
 GET http://localhost:8084/helloAuth1?name=Gunther
 Authorization: Bearer foobar
 
+###
+GET http://localhost:8084/helloAuth2?name=Gunther
+Authorization: Bearer foobar
+
 
 ###
 POST http://localhost:8084/hello1

@@ -1,7 +1,8 @@
-package de.wittig.http4stapir.controller.tapir
+package de.wittig.http4stapir.api.tapir
 
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.JwtDecoder._
+import de.wittig.http4stapir.api._
+import de.wittig.http4stapir.api.JwtDecoder._
 import de.wittig.http4stapir.model.{AuthUser, JsonInput, JsonOutput}
 import sttp.model.StatusCode
 import sttp.tapir._
@@ -11,13 +12,7 @@ import io.circe.generic.auto._
 import monix.eval.Task
 import sttp.tapir.server.PartialServerEndpoint
 
-object Api {
-
-  sealed trait ErrorInfo
-  case class NotFound(what: String)          extends ErrorInfo
-  case class Unauthorized(realm: String)     extends ErrorInfo
-  case class Unknown(code: Int, msg: String) extends ErrorInfo
-  case object NoContent                      extends ErrorInfo
+object HelloEndpoints {
 
   val fehler = oneOf[ErrorInfo](
     statusMapping(StatusCode.NotFound, jsonBody[NotFound].description("not found")),

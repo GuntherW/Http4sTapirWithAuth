@@ -1,8 +1,8 @@
-package de.wittig.http4stapir.controller.routes
+package de.wittig.http4stapir.api.routes
 
 import de.wittig.BuildInfo
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.tapir.Api.{helloGet1, helloGet2, helloGet3, helloPost1}
+import de.wittig.http4stapir.api.tapir.HelloEndpoints.{helloAuthGet2, helloGet1, helloGet2, helloGet3, helloPost1}
 import monix.eval.Task
 import org.http4s.HttpRoutes
 import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
@@ -23,6 +23,7 @@ object SwaggerRoutes {
       helloGet1,
       helloGet2,
       helloGet3,
+      helloAuthGet2,
       helloPost1
     )
     val yaml      = OpenAPIDocsInterpreter
