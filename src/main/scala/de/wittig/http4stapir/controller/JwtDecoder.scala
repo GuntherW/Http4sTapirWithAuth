@@ -1,7 +1,9 @@
-package de.wittig.http4stapir.controller.tapir
+package de.wittig.http4stapir.controller
 
 import de.wittig.http4stapir.ServiceConfig
+import de.wittig.http4stapir.controller.tapir.Api.{ErrorInfo, Unauthorized}
 import de.wittig.http4stapir.model.AuthUser
+import monix.eval.Task
 import sttp.tapir.EndpointInput.Auth
 import sttp.tapir.{DecodeResult, auth}
 
@@ -18,4 +20,11 @@ object JwtDecoder {
           DecodeResult.Error(headerValue, new NotAuthorizedException("Oooops, nice try :)"))
       }(_.name)
   }
+
+  def authFn(token: String): Task[Either[ErrorInfo, AuthUser]] =
+    if (token == "foobar")
+      Task.pure(Right(new AuthUser(token)))
+    else
+      Task.pure(Left(Unauthorized(token)))
+
 }

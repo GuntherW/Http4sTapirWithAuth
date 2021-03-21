@@ -10,7 +10,7 @@ GET http://localhost:8084/hello3?name=Gunther
 Authorization: Bearer foobar
 
 ###
-GET http://localhost:8084/hello4?name=falsch
+GET http://localhost:8084/helloAuth1?name=Gunther
 Authorization: Bearer foobar
 
 

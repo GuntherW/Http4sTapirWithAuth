@@ -1,16 +1,16 @@
-package de.wittig.http4stapir.controller.tapir
+package de.wittig.http4stapir.controller.routes
 
 import de.wittig.BuildInfo
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.controller.tapir.Api.{helloGet1, helloGet2, helloGet3, helloGet4, helloPost1}
+import de.wittig.http4stapir.controller.tapir.Api.{helloGet1, helloGet2, helloGet3, helloPost1}
 import monix.eval.Task
 import org.http4s.HttpRoutes
+import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
 import sttp.tapir.openapi.Info
-import sttp.tapir.docs.openapi._
-import sttp.tapir.openapi.circe.yaml._
+import sttp.tapir.openapi.circe.yaml.RichOpenAPI
 import sttp.tapir.swagger.http4s.SwaggerHttp4s
 
-object Swagger {
+object SwaggerRoutes {
 
   private val info = Info(
     BuildInfo.name,
@@ -23,7 +23,6 @@ object Swagger {
       helloGet1,
       helloGet2,
       helloGet3,
-      helloGet4,
       helloPost1
     )
     val yaml      = OpenAPIDocsInterpreter
