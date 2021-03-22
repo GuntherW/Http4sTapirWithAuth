@@ -3,7 +3,7 @@ package de.wittig.http4stapir.api.tapir
 import de.wittig.http4stapir.ServiceConfig
 import de.wittig.http4stapir.api._
 import de.wittig.http4stapir.api.JwtDecoder._
-import de.wittig.http4stapir.model.{AuthUser, JsonInput, JsonOutput}
+import de.wittig.http4stapir.model.{AuthUser, ErrorInfo, JsonInput, JsonOutput, NoContent, NotFound, Unauthorized, Unknown}
 import sttp.model.StatusCode
 import sttp.tapir._
 import sttp.tapir.generic.auto._

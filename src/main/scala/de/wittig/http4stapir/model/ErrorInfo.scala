@@ -1,4 +1,4 @@
-package de.wittig.http4stapir.api
+package de.wittig.http4stapir.model
 
 sealed trait ErrorInfo
 case class NotFound(what: String)          extends ErrorInfo
