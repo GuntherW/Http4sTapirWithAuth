@@ -6,8 +6,8 @@ object Version {
   val http4sVersion  = "0.21.22"
   val logbackVersion = "1.2.3"
   val monixVersion   = "3.3.0"
-  val sttpModel      = "1.4.0"
-  val sttpShared     = "1.1.1"
+  val sttpModel      = "1.4.1"
+  val sttpShared     = "1.2.0"
   val tapirVersion   = "0.17.19"
 
   // Test
