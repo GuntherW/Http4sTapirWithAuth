@@ -6,12 +6,12 @@ object Version {
   val http4sVersion  = "0.21.22"
   val logbackVersion = "1.2.3"
   val monixVersion   = "3.4.0"
-  val sttpModel      = "1.4.6"
-  val sttpShared     = "1.2.3"
+  val sttpModel      = "1.4.7"
+  val sttpShared     = "1.2.4"
   val tapirVersion   = "0.17.19"
 
   // Test
-  final val scalaTest = "3.2.8"
+  final val scalaTest = "3.2.9"
 
   // Compiler Plugins
   final val betterMonadicFor = "0.3.1"
