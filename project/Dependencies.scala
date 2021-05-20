@@ -3,11 +3,11 @@ import sbt._
 object Version {
   val catsVersion    = "2.6.1"
   val circeVersion   = "0.13.0"
-  val http4sVersion  = "0.21.22"
+  val http4sVersion  = "0.21.23"
   val logbackVersion = "1.2.3"
   val monixVersion   = "3.4.0"
   val sttpModel      = "1.4.7"
-  val sttpShared     = "1.2.4"
+  val sttpShared     = "1.2.5"
   val tapirVersion   = "0.17.19"
 
   // Test
@@ -15,7 +15,7 @@ object Version {
 
   // Compiler Plugins
   final val betterMonadicFor = "0.3.1"
-  final val kindProjector    = "0.12.0"
+  final val kindProjector    = "0.13.0"
 }
 
 object Library {
