@@ -7,7 +7,7 @@ lazy val root = (project in file("."))
     organization := "de.wittig",
     name := "http4stapir",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.13.6",
+    scalaVersion := Version.scala,
     libraryDependencies ++= Seq(
       Library.http4sBlazeServer,
       Library.http4sBlazeClient,

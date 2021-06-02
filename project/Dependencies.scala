@@ -2,13 +2,17 @@ import sbt._
 
 object Version {
   val catsVersion    = "2.6.1"
-  val circeVersion   = "0.13.0"
-  val http4sVersion  = "0.21.23"
+  val circeVersion   = "0.14.1"
+  val http4sVersion  = "0.21.24"
+//  val http4sVersion  = "0.22.0-RC1"
   val logbackVersion = "1.2.3"
   val monixVersion   = "3.4.0"
+  val scala          = "2.13.6"
+//  val scala          = "3.0.0"
   val sttpModel      = "1.4.7"
   val sttpShared     = "1.2.5"
   val tapirVersion   = "0.17.19"
+//  val tapirVersion   = "0.18.0-M11"
 
   // Test
   final val scalaTest = "3.2.9"
