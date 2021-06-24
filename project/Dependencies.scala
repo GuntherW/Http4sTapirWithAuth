@@ -12,7 +12,7 @@ object Version {
   val sttpModel      = "1.4.7"
   val sttpShared     = "1.2.5"
   val tapirVersion   = "0.17.19"
-//  val tapirVersion   = "0.18.0-M11"
+//  val tapirVersion   = "0.18.0-M14"
 
   // Test
   final val scalaTest = "3.2.9"
