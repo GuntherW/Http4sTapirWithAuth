@@ -6,12 +6,13 @@ import monix.execution.Scheduler
 import org.http4s.implicits.{http4sKleisliResponseSyntaxOptionT, http4sLiteralsSyntax}
 import org.http4s.{Header, Headers, Method, Request, Status}
 import org.scalatest.funsuite.AnyFunSuite
+import org.typelevel.ci.CIString
 
 class HelloRoutesTest extends AnyFunSuite {
 
   private implicit val config: ServiceConfig = ServiceConfig("foobar")
   private implicit val scheduler: Scheduler  = Scheduler.global
-  private val validHeader                    = Headers.of(Header("Authorization", "Bearer foobar"))
+  private val validHeader: Headers           = Headers(Header.Raw(CIString("Authorization"), "Bearer foobar"))
 
   test("ok") {
 

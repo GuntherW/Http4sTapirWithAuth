@@ -14,11 +14,11 @@ import sttp.tapir.server.PartialServerEndpoint
 
 object HelloEndpoints {
 
-  val fehler = oneOf[ErrorInfo](
-    statusMapping(StatusCode.NotFound, jsonBody[NotFound].description("not found")),
-    statusMapping(StatusCode.Unauthorized, jsonBody[Unauthorized].description("unauthorized")),
-    statusMapping(StatusCode.NoContent, emptyOutput.map(_ => NoContent)(_ => ())),
-    statusDefaultMapping(jsonBody[Unknown].description("unknown"))
+  private val fehler = oneOf[ErrorInfo](
+    oneOfMapping(StatusCode.NotFound, jsonBody[NotFound].description("not found")),
+    oneOfMapping(StatusCode.Unauthorized, jsonBody[Unauthorized].description("unauthorized")),
+    oneOfMapping(StatusCode.NoContent, emptyOutput.map(_ => NoContent)(_ => ())),
+    oneOfDefaultMapping(jsonBody[Unknown].description("unknown"))
   )
 
   private def getAuth(implicit config: ServiceConfig) =
@@ -44,7 +44,7 @@ object HelloEndpoints {
       .errorOut(fehler)
       .out(jsonBody[JsonOutput])
 
-  def helloAuthGet1(implicit config: ServiceConfig): PartialServerEndpoint[AuthUser, String, ErrorInfo, JsonOutput, Any, Task] =
+  def helloAuthGet1(implicit config: ServiceConfig): PartialServerEndpoint[String, AuthUser, String, ErrorInfo, JsonOutput, Any, Task] =
     endpoint
       .in("helloAuth1")
       .in(auth.bearer[String]())

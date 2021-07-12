@@ -26,7 +26,8 @@ object SwaggerRoutes {
       helloAuthGet2,
       helloPost1
     )
-    val yaml      = OpenAPIDocsInterpreter
+
+    val yaml = OpenAPIDocsInterpreter()
       .toOpenAPI(endpoints, info)
       .toYaml
 

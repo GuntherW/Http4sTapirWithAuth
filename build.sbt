@@ -28,7 +28,6 @@ lazy val root = (project in file("."))
       Library.monix,
       Library.scalaTest % Test
     ),
-    addCompilerPlugin(Library.betterMonadicFor),
     addCompilerPlugin(Library.kindProjector)
   )
 
