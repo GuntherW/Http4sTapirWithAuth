@@ -1,14 +1,14 @@
 package de.wittig.http4stapir.api.tapir
 
 import de.wittig.http4stapir.ServiceConfig
-import de.wittig.http4stapir.api._
-import de.wittig.http4stapir.api.JwtDecoder._
+import de.wittig.http4stapir.api.*
+import de.wittig.http4stapir.api.JwtDecoder.*
 import de.wittig.http4stapir.model.{AuthUser, ErrorInfo, JsonInput, JsonOutput, NoContent, NotFound, Unauthorized, Unknown}
 import sttp.model.StatusCode
-import sttp.tapir._
-import sttp.tapir.generic.auto._
+import sttp.tapir.*
+import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.jsonBody
-import io.circe.generic.auto._
+import io.circe.generic.auto.*
 import monix.eval.Task
 import sttp.tapir.server.PartialServerEndpoint
 

@@ -1,9 +1,5 @@
 lazy val root = (project in file("."))
-  .enablePlugins(BuildInfoPlugin)
   .settings(
-    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
-    buildInfoPackage := "de.wittig",
-    buildInfoOptions += BuildInfoOption.BuildTime,
     organization := "de.wittig",
     name := "http4stapir",
     version := "0.0.1-SNAPSHOT",
@@ -28,7 +24,6 @@ lazy val root = (project in file("."))
       Library.monix,
       Library.scalaTest % Test
     )
-    //addCompilerPlugin(Library.kindProjector)
   )
 
 scalacOptions ++=
@@ -40,9 +35,8 @@ scalacOptions ++=
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((3, _)) =>
         Seq(
-          "-source:future",               // für better-monadic-for, das es für Scala3 nicht mehr gibt
-          "-Ykind-projector:underscores", // für KindProjector
-          "-Ykind-projector"
+          "-source:future",  // für better-monadic-for, das es für Scala3 nicht mehr gibt
+          "-Ykind-projector" // für KindProjector
         )
       case _            =>
         Seq(

@@ -3,22 +3,16 @@ import sbt._
 object Version {
   val catsVersion    = "2.6.1"
   val circeVersion   = "0.14.1"
-//  val http4sVersion  = "0.21.24"
   val http4sVersion  = "0.22.0-RC1"
   val logbackVersion = "1.2.3"
   val monixVersion   = "3.4.0"
-  //val scala          = "2.13.6"
   val scala          = "3.0.1"
   val sttpModel      = "1.4.7"
   val sttpShared     = "1.2.5"
-  //val tapirVersion   = "0.17.20"
   val tapirVersion   = "0.18.0"
 
   // Test
   final val scalaTest = "3.2.9"
-
-  // Compiler Plugins
-  final val kindProjector = "0.13.0"
 }
 
 object Library {
@@ -42,7 +36,4 @@ object Library {
 
   // Test
   val scalaTest = "org.scalatest" %% "scalatest" % Version.scalaTest
-
-  // Compiler Plugin
-  val kindProjector = "org.typelevel" %% "kind-projector" % Version.kindProjector cross CrossVersion.full
 }
