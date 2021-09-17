@@ -1,8 +1,8 @@
 lazy val root = (project in file("."))
   .settings(
     organization := "de.wittig",
-    name := "http4stapir",
-    version := "0.0.1-SNAPSHOT",
+    name         := "http4stapir",
+    version      := "0.0.1-SNAPSHOT",
     scalaVersion := Version.scala,
     libraryDependencies ++= Seq(
       Library.http4sBlazeServer,
@@ -14,14 +14,14 @@ lazy val root = (project in file("."))
       Library.sttpModel,
       Library.sttpShared,
       Library.cats,
+      Library.catsEffect,
       Library.tapirHttp4s,
       Library.tapirCore,
       Library.tapirOpenApiDocs,
       Library.tapirOpenApiCirce,
-      Library.tapirSwagger cross CrossVersion.for3Use2_13,
-      Library.tapirRedoc cross CrossVersion.for3Use2_13,
+      Library.tapirSwagger,
+      Library.tapirRedoc,
       Library.tapirCirce,
-      Library.monix,
       Library.scalaTest % Test
     )
   )

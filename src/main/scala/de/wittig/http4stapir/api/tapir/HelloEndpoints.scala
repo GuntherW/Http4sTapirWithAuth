@@ -9,7 +9,7 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.jsonBody
 import io.circe.generic.auto.*
-import monix.eval.Task
+import cats.effect.IO
 import sttp.tapir.server.PartialServerEndpoint
 
 object HelloEndpoints {
@@ -44,7 +44,7 @@ object HelloEndpoints {
       .errorOut(fehler)
       .out(jsonBody[JsonOutput])
 
-  def helloAuthGet1(implicit config: ServiceConfig): PartialServerEndpoint[String, AuthUser, String, ErrorInfo, JsonOutput, Any, Task] =
+  def helloAuthGet1(implicit config: ServiceConfig): PartialServerEndpoint[String, AuthUser, String, ErrorInfo, JsonOutput, Any, IO] =
     endpoint
       .in("helloAuth1")
       .in(auth.bearer[String]())
